@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Albums</title>
+</head>
+<body>
+    <h1>Album List</h1>
+    <a href="{% url 'add_album' %}">Add New Album</a>
+
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Songs</th>
+        </tr>
+        {% for album in albums %}
+        <tr>
+            <td>{{ album.title }}</td>
+            <td>{{ album.artist }}</td>
+            <td>{{ album.genre }}</td>
+            <td>
+                <ul>
+                {% for song in album.song_set.all %}
+                    <li>{{ song.name }}</li>
+                {% empty %}
+                    <li>No songs</li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td>
+    <a href="{% url 'edit_album' album.pk %}">Edit</a> |
+    <a href="{% url 'delete_album' album.pk %}">Delete</a>
+</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

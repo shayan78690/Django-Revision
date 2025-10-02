@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - My Website</title>
+<link rel = "stylesheet" href = "{% static 'home.css' %}">
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>This is the home page. Navigate to know more about us.</p>
+
+    <nav>
+    <a href="{% url 'home' %}">Home</a> | 
+    <a href="{% url 'about' %}">About</a> | 
+    <a href="{% url 'contact' %}">Contact</a>
+</nav>
+</body>
+</html>
